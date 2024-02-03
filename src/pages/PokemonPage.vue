@@ -5,7 +5,7 @@
     <h1>Who's that pokemon?</h1>
 
     <PokemonPicture :pokemonId="pokemon.id" :showPokemon="showPokemon" />
-    <PokemonOptions :pokemons="pokemonsArr" />
+    <PokemonOptions :pokemons="pokemonsArr" @selection="checkAnswer" />
   </div>
 </template>
 
@@ -31,6 +31,10 @@ export default {
       this.pokemonsArr = await getPokemonOptions();
       const rndInt = Math.floor(Math.random() * 4);
       this.pokemon = this.pokemonsArr[rndInt];
+    },
+    checkAnswer(id) {
+      this.showPokemon = true;
+      console.log(id);
     },
   },
   mounted() {
