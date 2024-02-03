@@ -4,19 +4,25 @@
 
     <PokemonPicture :pokemonId="4" :showPokemon="false" />
     <!-- TODO: Options -->
-    <PokemonOptions />
+    <PokemonOptions :pokemons="pokemonsArr" />
   </div>
 </template>
 
 <script>
 import PokemonOptions from "@/components/PokemonOptions";
 import PokemonPicture from "@/components/PokemonPicture";
-
+import getPokemonOptions from "@/helpers/getPokemonOptions";
+getPokemonOptions();
 export default {
   name: "PokemonPage",
   components: {
     PokemonOptions,
     PokemonPicture,
+  },
+  data() {
+    return {
+      pokemonsArr: [],
+    };
   },
 };
 </script>
