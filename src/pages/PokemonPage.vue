@@ -2,8 +2,7 @@
   <div>
     <h1>Who's that pokemon?</h1>
 
-    <!-- TODO: Picture -->
-    <PokemonPicture />
+    <PokemonPicture :pokemonId="4" :showPokemon="false" />
     <!-- TODO: Options -->
     <PokemonOptions />
   </div>
