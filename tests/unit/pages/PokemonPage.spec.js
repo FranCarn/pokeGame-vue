@@ -57,4 +57,29 @@ describe("PokemonPage tests", () => {
     expect(picture.attributes("pokemonid")).toBe("1");
     expect(options.attributes("pokemons")).toBeTruthy();
   });
+
+  test("should call checkAnswer & update state", async () => {
+    const wrapper = shallowMount(PokemonPage, {
+      data() {
+        return {
+          message: null,
+          pokemon: pokemons[0],
+          pokemonsArr: pokemons,
+          showAnswer: false,
+          showPokemon: false,
+        };
+      },
+    });
+
+    await wrapper.vm.checkAnswer(1);
+    const message = wrapper.find("h3");
+    expect(message.exists()).toBeTruthy();
+    expect(message.text()).toBe(`You're right!, ${pokemons[0].name}`);
+    expect(wrapper.vm.showPokemon).toBeTruthy();
+    expect(wrapper.vm.showAnswer).toBeTruthy();
+
+    await wrapper.vm.checkAnswer(2);
+
+    expect(message.text()).toBe(`Oops you failed, was ${pokemons[0].name} :(`);
+  });
 });
