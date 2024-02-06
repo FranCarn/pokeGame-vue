@@ -16,7 +16,7 @@ describe("pokemonPicture tests", () => {
     wrapper = null;
   });
   test("should match with snapshot", () => {
-    expect(wrapper).toMatchSnapshot("pokemonPicture");
+    expect(wrapper.html()).toMatchSnapshot("pokemonPicture");
   });
   test("should show hidden picture with pokemon 100", () => {
     const [hideImg, showImg] = wrapper.findAll("img");
